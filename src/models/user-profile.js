@@ -14,18 +14,18 @@ const schema = new mongoose.Schema({
     unique: true,
     trim: true
   },
-  firstName: {
+  name: {
     type: String,
     required: true,
     trim: true
   },
-  surName: {
+  surname: {
     type: String,
     required: true,
     trim: true
   },
-  age: {
-    type: Number,
+  dateOfBirth: {
+    type: String,
     required: true
   },
   profilePicture: {
