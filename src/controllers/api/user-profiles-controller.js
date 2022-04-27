@@ -68,4 +68,41 @@ export class UserProfilesController {
       next(error)
     }
   }
+
+  /**
+   * Creates a user profile.
+   *
+   * @param {object} req Express request object.
+   * @param {object} res Express response object.
+   * @param {Function} next Express next middleware function.
+   */
+  async createProfile (req, res, next) {
+    try {
+      const profile = new UserProfile({
+        userId: req.user.id,
+        name: req.body.name,
+        surname: req.body.surname,
+        dateOfBirth: req.body.dateOfBirth,
+        active: req.body.active,
+        continentDestination: req.body.continentDestination,
+        countryDestination: req.body.countryDestination,
+        travelDescription: req.body.travelDescription,
+        agePreference: req.body.agePreference,
+        genderPreference: req.body.genderPreference
+      })
+
+      await profile.save()
+
+      const location = new URL(
+        `${req.protocol}://${req.get('host')}${req.baseUrl}/${profile._id}`
+      )
+
+      res
+        .location(location.href)
+        .status(201)
+        .json(profile)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
