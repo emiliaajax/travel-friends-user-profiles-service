@@ -8,7 +8,7 @@
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import createError from 'http-errors'
-import { UserProfilesController } from '../../../controllers/api/images-controller.js'
+import { UserProfilesController } from '../../../controllers/api/user-profiles-controller.js'
 
 export const router = express.Router()
 
