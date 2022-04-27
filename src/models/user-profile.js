@@ -28,6 +28,10 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  profilePicture: {
+    type: String,
+    required: true
+  },
   active: {
     type: Boolean,
     required: true
