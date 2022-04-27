@@ -57,7 +57,7 @@ export class UserProfilesController {
    * @param {object} res Express response object.
    * @param {Function} next Express next middleware function.
    */
-  async findActiveUsers (req, res, next) {
+  async findAllActiveUsers (req, res, next) {
     try {
       const activeUsers = await UserProfile.find({ active: true })
 
