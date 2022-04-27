@@ -14,4 +14,4 @@ router.get('/', (req, res) => res.json({
   message: 'Welcome to version 1 of this API!'
 }))
 
-router.use('/', userProfilesRouter)
+router.use('/users', userProfilesRouter)
