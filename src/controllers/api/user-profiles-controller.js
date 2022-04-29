@@ -128,6 +128,10 @@ export class UserProfilesController {
       req.profile.genderPreference = req.body.genderPreference
 
       await req.profile.save()
+
+      res
+        .status(204)
+        .end()
     } catch (error) {
       next(error)
     }
