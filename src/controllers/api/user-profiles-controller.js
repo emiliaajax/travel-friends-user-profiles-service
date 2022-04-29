@@ -84,6 +84,7 @@ export class UserProfilesController {
         surname: req.body.surname,
         dateOfBirth: req.body.dateOfBirth,
         active: req.body.active,
+        profilePicture: req.body.profilePicture,
         continentDestination: req.body.continentDestination,
         countryDestination: req.body.countryDestination,
         travelDescription: req.body.travelDescription,
@@ -101,6 +102,32 @@ export class UserProfilesController {
         .location(location.href)
         .status(201)
         .json(profile)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
+   * Updates a user profile.
+   *
+   * @param {object} req Express request object.
+   * @param {object} res Express response object.
+   * @param {Function} next Express next middleware function.
+   */
+  async updateProfile (req, res, next) {
+    try {
+      req.profile.name = req.body.name
+      req.profile.surname = req.body.surname
+      req.profile.dateOfBirth = req.body.dateOfBirth
+      req.profile.active = req.body.active
+      req.profile.profilePicture = req.body.profilePicture
+      req.profile.continentDestination = req.body.continentDestination
+      req.profile.countryDestination = req.body.countryDestination
+      req.profile.travelDescription = req.body.travelDescription
+      req.profile.agePreference = req.body.agePreference
+      req.profile.genderPreference = req.body.genderPreference
+
+      await req.profile.save()
     } catch (error) {
       next(error)
     }
