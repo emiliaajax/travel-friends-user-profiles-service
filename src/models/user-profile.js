@@ -16,25 +16,20 @@ const schema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
     trim: true
   },
   surname: {
     type: String,
-    required: true,
     trim: true
   },
   dateOfBirth: {
-    type: String,
-    required: true
+    type: String
   },
   profilePicture: {
-    type: String,
-    required: true
+    type: String
   },
   active: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   continentDestination: {
     type: String,

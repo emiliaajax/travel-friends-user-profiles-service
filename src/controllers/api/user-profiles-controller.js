@@ -37,6 +37,7 @@ export class UserProfilesController {
    */
   async loadUser (req, res, next, id) {
     try {
+      console.log(id)
       const profile = await UserProfile.findById(id)
 
       if (!profile) {
@@ -79,7 +80,7 @@ export class UserProfilesController {
   async createProfile (req, res, next) {
     try {
       const profile = new UserProfile({
-        userId: req.user.id,
+        userId: req.body.userId,
         name: req.body.name,
         surname: req.body.surname,
         dateOfBirth: req.body.dateOfBirth,
@@ -101,7 +102,9 @@ export class UserProfilesController {
       res
         .location(location.href)
         .status(201)
-        .json(profile)
+        .json({
+          id: profile.id
+        })
     } catch (error) {
       next(error)
     }

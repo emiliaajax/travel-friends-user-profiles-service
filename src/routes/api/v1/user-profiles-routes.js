@@ -48,9 +48,22 @@ const authenticateJWT = (req, res, next) => {
 }
 
 // Routes
-router.param('id', (req, res, next, id) => controller.loadImage(req, res, next, id))
+router.param('id', (req, res, next, id) => controller.loadUser(req, res, next, id))
 
 router.get('/',
   authenticateJWT,
   (req, res, next) => controller.findAllActiveUsers(req, res, next)
+)
+
+router.get('/:id',
+  authenticateJWT,
+  (req, res, next) => controller.findUser(req, res, next)
+)
+
+router.post('/',
+  (req, res, next) => controller.createProfile(req, res, next)
+)
+
+router.patch('/:id',
+  (req, res, next) => controller.updateProfile(req, res, next)
 )
