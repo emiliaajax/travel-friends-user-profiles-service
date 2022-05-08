@@ -119,16 +119,36 @@ export class UserProfilesController {
    */
   async updateProfile (req, res, next) {
     try {
-      req.profile.name = req.body.name
-      req.profile.surname = req.body.surname
-      req.profile.dateOfBirth = req.body.dateOfBirth
-      req.profile.active = req.body.active
-      req.profile.profilePicture = req.body.profilePicture
-      req.profile.continentDestination = req.body.continentDestination
-      req.profile.countryDestination = req.body.countryDestination
-      req.profile.travelDescription = req.body.travelDescription
-      req.profile.agePreference = req.body.agePreference
-      req.profile.genderPreference = req.body.genderPreference
+      if (req.body.name) {
+        req.profile.name = req.body.name
+      }
+      if (req.body.surname) {
+        req.profile.surname = req.body.surname
+      }
+      if (req.body.dateOfBirth) {
+        req.profile.dateOfBirth = req.body.dateOfBirth
+      }
+      if (req.body.active) {
+        req.profile.active = req.body.active
+      }
+      if (req.body.profilePicture) {
+        req.profile.profilePicture = req.body.profilePicture
+      }
+      if (req.body.continentDestination) {
+        req.profile.continentDestination = req.body.continentDestination
+      }
+      if (req.body.continentDestination) {
+        req.profile.countryDestination = req.body.countryDestination
+      }
+      if (req.body.travelDescription) {
+        req.profile.travelDescription = req.body.travelDescription
+      }
+      if (req.body.agePreference) {
+        req.profile.agePreference = req.body.agePreference
+      }
+      if (req.body.genderPreference) {
+        req.profile.genderPreference = req.body.genderPreference
+      }
 
       await req.profile.save()
 
