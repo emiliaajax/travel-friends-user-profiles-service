@@ -57,7 +57,7 @@ router.get('/',
 
 router.get('/:id',
   authenticateJWT,
-  (req, res, next) => controller.findUser(req, res, next)
+  (req, res, next) => controller.loadUser(req, res, next)
 )
 
 router.post('/',
@@ -65,5 +65,7 @@ router.post('/',
 )
 
 router.patch('/:id',
+  authenticateJWT,
+  (req, res, next) => controller.authorize(req, res, next),
   (req, res, next) => controller.updateProfile(req, res, next)
 )
