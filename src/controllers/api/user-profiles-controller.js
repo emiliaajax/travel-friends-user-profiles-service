@@ -37,7 +37,6 @@ export class UserProfilesController {
    */
   async loadUser (req, res, next, id) {
     try {
-      console.log(id)
       const profile = await UserProfile.findById(id)
 
       if (!profile) {
@@ -45,6 +44,7 @@ export class UserProfilesController {
       }
 
       req.profile = profile
+
       next()
     } catch (error) {
       next(error)
