@@ -22,11 +22,14 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  gender: {
+    type: String
+  },
   dateOfBirth: {
     type: String
   },
   profilePicture: {
-    type: String
+    type: Buffer
   },
   active: {
     type: Boolean
@@ -44,8 +47,7 @@ const schema = new mongoose.Schema({
     trim: true
   },
   agePreference: {
-    type: String,
-    trim: true
+    type: Array
   },
   genderPreference: {
     type: String,
