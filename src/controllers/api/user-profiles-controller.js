@@ -79,19 +79,7 @@ export class UserProfilesController {
    */
   async createProfile (req, res, next) {
     try {
-      const profile = new UserProfile({
-        userId: req.body.userId,
-        name: req.body.name,
-        surname: req.body.surname,
-        dateOfBirth: req.body.dateOfBirth,
-        active: req.body.active,
-        profilePicture: req.body.profilePicture,
-        continentDestination: req.body.continentDestination,
-        countryDestination: req.body.countryDestination,
-        travelDescription: req.body.travelDescription,
-        agePreference: req.body.agePreference,
-        genderPreference: req.body.genderPreference
-      })
+      const profile = new UserProfile(req.body)
 
       await profile.save()
 
@@ -124,6 +112,9 @@ export class UserProfilesController {
       }
       if (req.body.surname) {
         req.profile.surname = req.body.surname
+      }
+      if (req.body.gender) {
+        req.profile.gender = req.body.gender
       }
       if (req.body.dateOfBirth) {
         req.profile.dateOfBirth = req.body.dateOfBirth
