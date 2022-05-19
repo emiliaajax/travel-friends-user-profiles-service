@@ -29,7 +29,7 @@ const schema = new mongoose.Schema({
     type: String
   },
   profilePicture: {
-    type: Buffer
+    type: String
   },
   active: {
     type: Boolean
