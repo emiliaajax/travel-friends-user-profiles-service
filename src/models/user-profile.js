@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({
     type: String
   },
   dateOfBirth: {
-    type: String
+    type: Date
   },
   profilePicture: {
     type: String
@@ -63,9 +63,9 @@ const schema = new mongoose.Schema({
      * @param {object} ret The plain object response which has been converted.
      */
     transform: function (doc, ret) {
-      delete ret._id
+      // delete ret._id
       delete ret.__v
-      delete ret.userId
+      // delete ret.userId
     }
   },
   virtuals: true
