@@ -57,7 +57,7 @@ router.get('/',
 
 router.get('/:id',
   authenticateJWT,
-  (req, res, next) => controller.loadUser(req, res, next)
+  (req, res, next) => controller.findUser(req, res, next)
 )
 
 router.post('/',

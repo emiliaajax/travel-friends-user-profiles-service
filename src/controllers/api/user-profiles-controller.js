@@ -71,6 +71,19 @@ export class UserProfilesController {
   }
 
   /**
+   * Sends a JSON response containing one user.
+   *
+   * @param {object} req Express request object.
+   * @param {object} res Express response object.
+   * @param {Function} next Express next middleware function.
+   */
+  findUser (req, res, next) {
+    res
+      .status(200)
+      .json(req.profile)
+  }
+
+  /**
    * Creates a user profile.
    *
    * @param {object} req Express request object.
