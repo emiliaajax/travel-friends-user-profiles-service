@@ -55,23 +55,22 @@ router.get('/',
   (req, res, next) => controller.findAllActiveUsers(req, res, next)
 )
 
+router.post('/',
+  (req, res, next) => controller.createProfile(req, res, next)
+)
+
+router.get('/my-profile',
+  authenticateJWT,
+  (req, res, next) => controller.findMyProfile(req, res, next)
+)
+
 router.get('/:id',
   authenticateJWT,
   (req, res, next) => controller.findUser(req, res, next)
-)
-
-router.post('/',
-  (req, res, next) => controller.createProfile(req, res, next)
 )
 
 router.patch('/:id',
   authenticateJWT,
   (req, res, next) => controller.authorize(req, res, next),
   (req, res, next) => controller.updateProfile(req, res, next)
-)
-
-router.delete('/:id',
-  authenticateJWT,
-  (req, res, next) => controller.authorize(req, res, next),
-  (req, res, next) => controller.delete(req, res, next)
 )

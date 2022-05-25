@@ -112,6 +112,25 @@ export class UserProfilesController {
   }
 
   /**
+   * Finds profile of authenticated user.
+   *
+   * @param {object} req Express request object.
+   * @param {object} res Express response object.
+   * @param {Function} next Express next middleware function.
+   */
+  async findMyProfile (req, res, next) {
+    try {
+      const user = await UserProfile.findOne({ userId: req.user.id })
+
+      res
+        .status(201)
+        .json(user)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
    * Updates a user profile.
    *
    * @param {object} req Express request object.
@@ -132,7 +151,7 @@ export class UserProfilesController {
       if (req.body.dateOfBirth) {
         req.profile.dateOfBirth = req.body.dateOfBirth
       }
-      if (req.body.active) {
+      if (req.body.active !== undefined) {
         req.profile.active = req.body.active
       }
       if (req.body.profilePicture) {
