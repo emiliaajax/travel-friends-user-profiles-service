@@ -52,6 +52,25 @@ export class UserProfilesController {
   }
 
   /**
+   * Sends a JSON response containing all users.
+   *
+   * @param {object} req Express request object.
+   * @param {object} res Express response object.
+   * @param {Function} next Express next middleware function.
+   */
+  async findAllUsers (req, res, next) {
+    try {
+      const users = await UserProfile.find()
+
+      res
+        .status(200)
+        .json(users)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
    * Sends a JSON response containing all active users.
    *
    * @param {object} req Express request object.

@@ -59,6 +59,11 @@ router.post('/',
   (req, res, next) => controller.createProfile(req, res, next)
 )
 
+router.get('/users',
+  authenticateJWT,
+  (req, res, next) => controller.findAllUsers(req, res, next)
+)
+
 router.get('/my-profile',
   authenticateJWT,
   (req, res, next) => controller.findMyProfile(req, res, next)
