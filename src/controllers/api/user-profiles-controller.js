@@ -211,7 +211,6 @@ export class UserProfilesController {
    */
   async delete (req, res, next) {
     try {
-      console.log(req.profile)
       await req.profile.deleteOne()
 
       res

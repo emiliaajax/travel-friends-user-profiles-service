@@ -16,14 +16,17 @@ const schema = new mongoose.Schema({
   },
   name: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [256, 'Namn måste vara mindre än 256 tecken']
   },
   surname: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [256, 'Namn måste vara mindre än 256 tecken']
   },
   gender: {
-    type: String
+    type: String,
+    maxlength: [256, 'Namn måste vara mindre än 256 tecken']
   },
   dateOfBirth: {
     type: Date
@@ -36,22 +39,26 @@ const schema = new mongoose.Schema({
   },
   continentDestination: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [256, 'Världsdel måste vara mindre än 256 tecken']
   },
   countryDestination: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [256, 'Land måste vara 256 tecken eller mindre']
   },
   travelDescription: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [1000, 'Beskrivning kan max vara 1000 tecken']
   },
   agePreference: {
     type: Array
   },
   genderPreference: {
     type: String,
-    trim: true
+    trim: true,
+    maxlength: [256, 'Världsdel måste vara mindre än 256 tecken']
   }
 }, {
   timestamps: true,
@@ -63,9 +70,7 @@ const schema = new mongoose.Schema({
      * @param {object} ret The plain object response which has been converted.
      */
     transform: function (doc, ret) {
-      // delete ret._id
       delete ret.__v
-      // delete ret.userId
     }
   },
   virtuals: true
